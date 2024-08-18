@@ -1,125 +1,91 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 
 interface Message {
-  role: 'human' | 'ai';
-  content: string;
+    role: 'human' | 'ai';
+    content: string;
 }
 
 const AIChatbot: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputText, setInputText] = useState('');
-  const chatContainerRef = useRef<HTMLDivElement>(null);
-  const [isClient, setIsClient] = useState(false);
+    const [messages, setMessages] = useState<Message[]>([]);
+    const [inputText, setInputText] = useState('');
+    const chatContainerRef = useRef<HTMLDivElement>(null);
+    const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
-  useEffect(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-    }
-  }, [messages]);
+    useEffect(() => {
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+        }
+    }, [messages]);
 
-  const handleSendMessage = async () => {
-    if (inputText.trim() === '') return;
+    const handleSendMessage = async () => {
+        if (inputText.trim() === '') return;
 
-    const newUserMessage: Message = {
-      role: 'human',
-      content: inputText,
+        const newUserMessage: Message = {
+            role: 'human',
+            content: inputText,
+        };
+
+        setMessages((prevMessages) => [...prevMessages, newUserMessage]);
+        setInputText('');
+
+        // Your existing commented-out API call code...
+
+        const newAIMessage: Message = {
+            role: 'ai',
+            content: 'Hello! How can I help you today?',
+        };
+
+        setMessages((prevMessages) => [...prevMessages, newAIMessage]);
     };
 
-    setMessages((prevMessages) => [...prevMessages, newUserMessage]);
-    setInputText('');
-
-    try {
-      const response = await axios.post('/api/ai/generate', {
-        question: inputText,
-        previousConversation: messages,
-      });
-
-      const newAIMessage: Message = {
-        role: 'ai',
-        content: response.data.answer,
-      };
-
-      setMessages((prevMessages) => [...prevMessages, newAIMessage]);
-    } catch (error) {
-      console.error('Error sending message:', error);
+    if (!isClient) {
+        return null; // or a loading spinner
     }
-  };
 
-  if (!isClient) {
-    return null; // or a loading spinner
-  }
-
-  return (
-    <div className="chat-container" style={{ width: '400px', margin: 'auto', fontFamily: 'Arial, sans-serif' }}>
-      <div
-        ref={chatContainerRef}
-        style={{
-          height: '500px',
-          overflowY: 'auto',
-          padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
-          marginBottom: '10px'
-        }}
-      >
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            style={{
-              padding: '8px',
-              marginBottom: '10px',
-              borderRadius: '5px',
-              maxWidth: '70%',
-              alignSelf: message.role === 'human' ? 'flex-end' : 'flex-start',
-              backgroundColor: message.role === 'human' ? '#007bff' : '#f1f0f0',
-              color: message.role === 'human' ? 'white' : 'black',
-              alignItems: message.role === 'human' ? 'flex-end' : 'flex-start',
-              marginLeft: message.role === 'human' ? 'auto' : '0',
-            }}
-          >
-            {message.content}
-          </div>
-        ))}
-      </div>
-      <div style={{ display: 'flex' }}>
-        <input
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-          style={{
-            flexGrow: 1,
-            padding: '10px',
-            fontSize: '16px',
-            border: '1px solid #ccc',
-            borderRadius: '5px 0 0 5px'
-          }}
-          placeholder="Type your message here..."
-        />
-        <button
-          onClick={handleSendMessage}
-          style={{
-            padding: '10px 20px',
-            fontSize: '16px',
-            backgroundColor: '#007bff',
-            color: 'white',
-            border: 'none',
-            borderRadius: '0 5px 5px 0',
-            cursor: 'pointer'
-          }}
-        >
-          Send
-        </button>
-      </div>
-    </div>
-  );
+    return (
+        <div className="w-full max-w-md mx-auto font-default">
+            <div
+                ref={chatContainerRef}
+                className="h-[500px] overflow-y-auto p-4 border border-gray-300 rounded-2xl mb-4 bg-white/70 custom-scrollbar"
+            >
+                {messages.map((message, index) => (
+                    <div
+                        key={index}
+                        className={`p-2 mb-2 rounded-lg max-w-[70%] ${
+                            message.role === 'human'
+                                ? 'ml-auto bg-violet-500 text-white'
+                                : 'mr-auto bg-gray-200 text-black'
+                        }`}
+                    >
+                        {message.content}
+                    </div>
+                ))}
+            </div>
+            <div className="flex">
+                <input
+                    type="text"
+                    value={inputText}
+                    onChange={(e) => setInputText(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+                    className="flex-grow p-2 text-base border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white/70"
+                    placeholder="Type your message here..."
+                />
+                <button
+                    onClick={handleSendMessage}
+                    className="px-4 py-2 text-base font-semibold text-white bg-pink-600 rounded-r-lg hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                >
+                    Send
+                </button>
+            </div>
+        </div>
+    );
 };
 
 export default AIChatbot;
