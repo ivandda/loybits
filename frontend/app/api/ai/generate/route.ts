@@ -16,7 +16,7 @@ const embeddings = new OpenAIEmbeddings({
 });
 
 interface ConversationExchange {
-    role: 'human' | 'ai';
+    role: 'human' | 'AI';
     content: string;
 }
 
