@@ -56,7 +56,6 @@ https://user-images.githubusercontent.com/28986134/212368288-12f41e37-aa8c-4e0a-
 
 - [Next.js](https://nextjs.org/) – React framework for building performant apps with the best developer experience
 - [Auth.js](https://authjs.dev/) – Handle user authentication with ease with providers like Google, Twitter, GitHub, etc.
-- [Prisma](https://www.prisma.io/) – Typescript-first ORM for Node.js
 
 ### Platforms
 

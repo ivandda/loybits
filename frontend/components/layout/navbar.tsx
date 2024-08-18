@@ -3,13 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import useScroll from "@/lib/hooks/use-scroll";
-import { useSignInModal } from "./sign-in-modal";
-import UserDropdown from "./user-dropdown";
-import { Session } from "next-auth";
 import {usePathname} from "next/navigation";
+import {ConnectButton} from "@/components/web3/connect-button";
 
-export default function NavBar({ session }: { session: Session | null }) {
-  const { SignInModal, setShowSignInModal } = useSignInModal();
+export default function NavBar() {
   const pathname = usePathname()
   const scrolled = useScroll(50);
 
@@ -35,7 +32,6 @@ export default function NavBar({ session }: { session: Session | null }) {
       </div>
     </> :
     <>
-      <SignInModal />
       <div
         className={`fixed top-0 w-full flex justify-center ${
           scrolled
@@ -55,16 +51,7 @@ export default function NavBar({ session }: { session: Session | null }) {
             <p className={"text-2xl"}>Loybits</p>
           </Link>
           <div>
-            {session ? (
-              <UserDropdown session={session} />
-            ) : (
-              <button
-                className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
-                onClick={() => setShowSignInModal(true)}
-              >
-                Sign In
-              </button>
-            )}
+            <ConnectButton/>
           </div>
         </div>
       </div>

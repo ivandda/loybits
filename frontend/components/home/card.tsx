@@ -1,29 +1,32 @@
 import { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
+import Image from "next/image";
 
 export default function Card({
   title,
   description,
   demo,
+  cost,
   large,
 }: {
   title: string;
   description: string;
   demo: ReactNode;
+  cost: number;
   large?: boolean;
 }) {
   return (
     <div
-      className={`relative col-span-1 h-96 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md ${
+      className={`relative col-span-1 h-96 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md px-4${
         large ? "md:col-span-2" : ""
       }`}
     >
-      <div className="flex h-60 items-center justify-center">{demo}</div>
+      <div className="flex h-[13rem] items-center justify-center">{demo}</div>
       <div className="mx-auto max-w-lg text-center">
         <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-xl font-bold text-transparent [text-wrap:balance] md:text-3xl md:font-normal">
           {title}
         </h2>
-        <div className="prose-sm mt-3 leading-normal text-gray-500 [text-wrap:balance] md:prose">
+        <div className="prose-sm mt-3 leading-normal text-gray-500 [text-wrap:balance] md:prose px-4">
           <ReactMarkdown
             components={{
               a: ({ node, ...props }) => (
@@ -45,6 +48,25 @@ export default function Card({
           >
             {description}
           </ReactMarkdown>
+        </div>
+        <div className={"flex justify-between p-4"}>
+          <div className={"flex items-center"}>
+            <p className={'text-black text-lg'}>{cost} </p>
+            <Image className={"h-[30px] p-1"}
+              src="/coin_logo.png"
+              alt="Logo"
+              width="30"
+              height="30"
+            />
+          </div>
+
+          <a
+            className="group flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:border-transparent hover:bg-pink-600"
+            href={"/user_view"}
+            rel="noopener noreferrer"
+          >
+            <p> Claim </p>
+          </a>
         </div>
       </div>
     </div>

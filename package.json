@@ -1,0 +1,37 @@
+{
+  "name": "@loybits/monorepo",
+  "description": "Full-Stack DApp for Loybits Platform",
+  "homepage": "",
+  "author": "Loybits <loybits.token@gmail.com> ",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "contract"
+  ],
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "scripts": {
+    "dev": "pnpm run -F frontend dev",
+    "build": "pnpm run -F frontend build",
+    "start": "pnpm run -F frontend start",
+    "node": "pnpm run -F contract node",
+    "type-check": "pnpm run -F '*' type-check",
+    "sync-types": "pnpm run -F '*' sync-types && pnpm install",
+    "lint": "pnpm run -F '*' lint",
+    "lint:fix": "pnpm run -F '*' lint:fix",
+    "lint:format": "pnpm run -F '*' lint:format",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.5",
+    "lint-staged": "^15.2.7",
+    "next": "^14.2.4",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.4.5",
+    "typesync": "^0.12.1"
+  }
+}

@@ -6,6 +6,10 @@ import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 
+import {ToastConfig} from "@/app/toast-config";
+import { TooltipProvider } from '@/components/ui/tooltip'
+import ClientProviders from "@/app/providers";
+
 export const metadata = {
   title: "Loybits - Revolutionizing Customer Loyalty",
   description:
@@ -20,6 +24,8 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
+    <ClientProviders>
+      <TooltipProvider>
       <body className={cx(sfPro.variable, inter.variable)}>
         <div className="fixed h-screen w-full bg-gradient-to-br from-violet-900 via-violet-700 to-violet-500" />
         <Suspense fallback="...">
@@ -31,6 +37,9 @@ export default async function RootLayout({
         <Footer />
         <VercelAnalytics />
       </body>
+        </TooltipProvider>
+      <ToastConfig />
+    </ClientProviders>
     </html>
   );
 }
