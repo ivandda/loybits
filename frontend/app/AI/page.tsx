@@ -6,7 +6,10 @@ export default function AIPage() {
       <h1 className="animate-fade-up bg-gradient-to-br from-white to-stone-400 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]" style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
         AI Chatbot
       </h1>
-      <div className="mt-6">
+      <p className="mt-4 animate-fade-up text-center text-gray-200 opacity-0 md:text-lg" style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
+        Welcome to the Loybits AI assistant! Feel free to ask anything about Loybits, our loyalty program, or how we can help your business.
+      </p>
+      <div className="mt-8">
         <AIChatbot />
       </div>
     </div>
