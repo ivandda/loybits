@@ -6,7 +6,7 @@ In today's dynamic and competitive market, both small and medium-sized enterpris
 
 Loybits emerges as an innovative and transformative solution that comprehensively addresses these challenges. At its core, Loybits is a blockchain-based platform built on Polkadot, leveraging the power of this next-generation blockchain to create a transparent, secure, and efficient loyalty ecosystem. The Polkadot foundation provides Loybits with unparalleled interoperability, scalability, and customizability, setting it apart from traditional blockchain solutions. This advanced blockchain infrastructure is enhanced by cutting-edge generative AI, offering a range of automated and intelligent solutions that revolutionize how businesses reward their customers and how customers perceive and use these rewards.
 
-This document details de problem and solution presented. To know more about the technological aspects of the solution go to: [This link](https://github.com/ivandda/loybits/blob/TechnicalStackAndArchitecture(POC).md)
+This document details de problem and solution presented. To know more about the technological aspects of the solution go to: [This link](https://github.com/ivandda/loybits/blob/main/TechnicalStackAndArchitecture(POC).md)
 
 ## The Problem in Detail
 
