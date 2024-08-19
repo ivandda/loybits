@@ -1,6 +1,5 @@
-import Card from "@/components/home/card";
-import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
+import MyRewardList from "@/components/web3/my-rewards";
 
 export default async function AcquirerMain() {
 
@@ -11,25 +10,41 @@ export default async function AcquirerMain() {
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
           My Rewards
         </h1>
+        <div
+          className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
+          style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
+        >
+          <button
+            className="group flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:border-gray-500"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/money.webp"
+              alt="Logo"
+              width="30"
+              height="30"
+              className="mr-2 rounded-sm"
+            />
+            <p>Simulate Payment</p>
+          </button>
+          <button
+            className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-5 py-2 text-sm text-gray-600 shadow-md transition-colors hover:border-gray-800"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/giftcard.webp"
+              alt="Logo"
+              width="30"
+              height="30"
+              className="mr-2 rounded-sm"
+            />
+            <p>
+              Add Reward
+            </p>
+          </button>
+        </div>
       </div>
-      {/*<div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">*/}
-      {/*  {rewards.map(({ title, description, demo, cost, large }) => (*/}
-      {/*    <Card*/}
-      {/*      key={title}*/}
-      {/*      title={title}*/}
-      {/*      description={description}*/}
-      {/*      cost={cost}*/}
-      {/*      demo={*/}
-      {/*        title === "Beautiful, reusable components" ? (*/}
-      {/*          <ComponentGrid />*/}
-      {/*        ) : (*/}
-      {/*          demo*/}
-      {/*        )*/}
-      {/*      }*/}
-      {/*      large={large}*/}
-      {/*    />*/}
-      {/*  ))}*/}
-      {/*</div>*/}
+      <MyRewardList/>
     </>
   );
 }
