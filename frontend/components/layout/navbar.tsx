@@ -10,8 +10,6 @@ export default function NavBar() {
   const pathname = usePathname()
   const scrolled = useScroll(50);
 
-  console.log(pathname)
-
   return pathname === '/' ?
     <>
       <div

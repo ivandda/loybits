@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC, useMemo, useState } from 'react'
+import {FC, useEffect, useMemo, useState} from 'react'
 
 import { SupportedChainId } from '@azns/resolver-core'
 import { useResolveAddressToDomain } from '@azns/resolver-react'
@@ -15,7 +15,7 @@ import {
   getSubstrateChain,
   isWalletInstalled,
   useBalance,
-  useInkathon,
+  useInkathon, useRegisteredContract,
 } from '@scio-labs/use-inkathon'
 import { AlertOctagon } from 'lucide-react'
 import aznsIconSvg from 'public/icons/azns-icon.svg'
@@ -36,11 +36,15 @@ import {env} from "@/config/environment";
 import { truncateHash } from '@/lib/truncate-hash'
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
+import fetchLoybitsBalance from "@/lib/hooks/use-balance";
+import {ContractIds} from "@/deployments/deployments";
+import {usePathname} from "next/navigation";
 
 
 export interface ConnectButtonProps {}
 export const ConnectButton: FC<ConnectButtonProps> = () => {
   const {
+    api,
     activeChain,
     switchActiveChain,
     connect,
@@ -58,6 +62,9 @@ export const ConnectButton: FC<ConnectButtonProps> = () => {
   const [supportedChains] = useState(
     env.supportedChains.map((networkId) => getSubstrateChain(networkId) as SubstrateChain),
   )
+  const pathname = usePathname()
+  const { contract, address: contractAddress } = useRegisteredContract(ContractIds.Loybits)
+  const [loybitsBalance, setLoybitsBalance] = useState(null);
 
   // Sort installed wallets first
   const [browserWallets] = useState([
@@ -68,6 +75,15 @@ export const ConnectButton: FC<ConnectButtonProps> = () => {
       (w) => w.platforms.includes(SubstrateWalletPlatform.Browser) && !isWalletInstalled(w),
     ),
   ])
+
+  useEffect(() => {
+    if(activeAccount) {
+      fetchLoybitsBalance(api, activeAccount, contract, pathname).then(result => {
+        setLoybitsBalance(result)
+      })
+    }
+  }, [activeAccount]);
+
 
   // Connect Button
   if (!activeAccount)
@@ -214,6 +230,21 @@ export const ConnectButton: FC<ConnectButtonProps> = () => {
           )}
         </div>
       )}
+
+      {/* Account Balance in Loybits */}
+      {loybitsBalance !== null && activeAccount && (
+        <div className="flex min-w-[10rem] items-center justify-center gap-2 rounded-2xl border bg-white/70 px-4 py-3 font-mono text-sm font-bold text-black">
+          {loybitsBalance}
+          <Image className={"h-[30px] p-1"}
+                 src="/coin_logo.png"
+                 alt="Logo"
+                 width="30"
+                 height="30"
+          />
+        </div>
+      )}
+
+
     </div>
   )
 }

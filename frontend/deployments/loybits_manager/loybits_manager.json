@@ -1,6 +1,6 @@
 {
   "source": {
-    "hash": "0x0bfc36930db8a3d3a6ba9abc94a06c075886623bcdd843764debcc0e06bbb7d7",
+    "hash": "0x8eddd59a4f0b24b7b119c2db5e306fdcee012a4c07ef60c283f2d864c42c7111",
     "language": "ink! 5.0.0",
     "compiler": "rustc 1.80.1",
     "build_info": {
@@ -34,7 +34,7 @@
             "ink_primitives",
             "ConstructorResult"
           ],
-          "type": 23
+          "type": 26
         },
         "selector": "0x9bae9d5e"
       }
@@ -51,7 +51,7 @@
         "displayName": [
           "Balance"
         ],
-        "type": 29
+        "type": 33
       },
       "blockNumber": {
         "displayName": [
@@ -63,13 +63,13 @@
         "displayName": [
           "ChainExtension"
         ],
-        "type": 32
+        "type": 36
       },
       "hash": {
         "displayName": [
           "Hash"
         ],
-        "type": 30
+        "type": 34
       },
       "maxEventTopics": 4,
       "staticBufferSize": 16384,
@@ -77,7 +77,7 @@
         "displayName": [
           "Timestamp"
         ],
-        "type": 31
+        "type": 35
       }
     },
     "events": [
@@ -164,12 +164,23 @@
               ],
               "type": 0
             }
+          },
+          {
+            "docs": [],
+            "indexed": false,
+            "label": "name",
+            "type": {
+              "displayName": [
+                "String"
+              ],
+              "type": 12
+            }
           }
         ],
         "docs": [],
         "label": "NewAcquirer",
         "module_path": "loybits_manager::loybit_manager",
-        "signature_topic": "0x0836da9c0d7e9871dc304f6e5d39bb6268a76a8eaeae6afd57797f4dd7ba85b7"
+        "signature_topic": "0x71f5281bc669b6e4459f50663bfeddd6483df63d92f809f7055b21837089bee4"
       },
       {
         "args": [
@@ -187,6 +198,17 @@
           {
             "docs": [],
             "indexed": false,
+            "label": "business",
+            "type": {
+              "displayName": [
+                "String"
+              ],
+              "type": 12
+            }
+          },
+          {
+            "docs": [],
+            "indexed": false,
             "label": "cost",
             "type": {
               "displayName": [
@@ -198,7 +220,40 @@
           {
             "docs": [],
             "indexed": false,
-            "label": "name",
+            "label": "title",
+            "type": {
+              "displayName": [
+                "String"
+              ],
+              "type": 12
+            }
+          },
+          {
+            "docs": [],
+            "indexed": false,
+            "label": "description",
+            "type": {
+              "displayName": [
+                "String"
+              ],
+              "type": 12
+            }
+          },
+          {
+            "docs": [],
+            "indexed": false,
+            "label": "category",
+            "type": {
+              "displayName": [
+                "String"
+              ],
+              "type": 12
+            }
+          },
+          {
+            "docs": [],
+            "indexed": false,
+            "label": "id",
             "type": {
               "displayName": [
                 "String"
@@ -210,7 +265,7 @@
         "docs": [],
         "label": "NewReward",
         "module_path": "loybits_manager::loybit_manager",
-        "signature_topic": "0x546f12874faaaa947637ea8da526a4a11d6f64e64087d23f28f9345cb95392ec"
+        "signature_topic": "0xa618445250ca938403bd89a2375b3a9fce63ed77bf32c18494ee1fc2e77d04ff"
       },
       {
         "args": [
@@ -259,7 +314,7 @@
         "ink",
         "LangError"
       ],
-      "type": 24
+      "type": 27
     },
     "messages": [
       {
@@ -276,7 +331,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 25
+          "type": 28
         },
         "selector": "0x0c3a797d"
       },
@@ -294,7 +349,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 25
+          "type": 28
         },
         "selector": "0xe95b1b0b"
       },
@@ -302,7 +357,7 @@
         "args": [],
         "default": false,
         "docs": [],
-        "label": "getRewards",
+        "label": "get_rewards",
         "mutates": false,
         "payable": false,
         "returnType": {
@@ -310,9 +365,9 @@
             "ink",
             "MessageResult"
           ],
-          "type": 27
+          "type": 30
         },
-        "selector": "0xfb5aa510"
+        "selector": "0x8fe0c228"
       },
       {
         "args": [],
@@ -328,7 +383,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 23
+          "type": 26
         },
         "selector": "0x46f5a0fa"
       },
@@ -341,6 +396,15 @@
                 "u32"
               ],
               "type": 0
+            }
+          },
+          {
+            "label": "name",
+            "type": {
+              "displayName": [
+                "String"
+              ],
+              "type": 12
             }
           }
         ],
@@ -356,7 +420,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 23
+          "type": 26
         },
         "selector": "0x2b16e70f"
       },
@@ -388,6 +452,24 @@
               ],
               "type": 12
             }
+          },
+          {
+            "label": "description",
+            "type": {
+              "displayName": [
+                "String"
+              ],
+              "type": 12
+            }
+          },
+          {
+            "label": "id",
+            "type": {
+              "displayName": [
+                "String"
+              ],
+              "type": 12
+            }
           }
         ],
         "default": false,
@@ -402,7 +484,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 23
+          "type": 26
         },
         "selector": "0x1b146ead"
       },
@@ -439,7 +521,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 23
+          "type": 26
         },
         "selector": "0xde7f3c2f"
       },
@@ -467,7 +549,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 23
+          "type": 26
         },
         "selector": "0x5940d1d5"
       }
@@ -512,6 +594,21 @@
               "layout": {
                 "root": {
                   "layout": {
+                    "leaf": {
+                      "key": "0x1228c443",
+                      "ty": 12
+                    }
+                  },
+                  "root_key": "0x1228c443",
+                  "ty": 13
+                }
+              },
+              "name": "acquirer_names"
+            },
+            {
+              "layout": {
+                "root": {
+                  "layout": {
                     "struct": {
                       "fields": [
                         {
@@ -539,6 +636,15 @@
                               "ty": 12
                             }
                           },
+                          "name": "description"
+                        },
+                        {
+                          "layout": {
+                            "leaf": {
+                              "key": "0x54dcbd53",
+                              "ty": 12
+                            }
+                          },
                           "name": "category"
                         },
                         {
@@ -549,13 +655,22 @@
                             }
                           },
                           "name": "cost"
+                        },
+                        {
+                          "layout": {
+                            "leaf": {
+                              "key": "0x54dcbd53",
+                              "ty": 12
+                            }
+                          },
+                          "name": "id"
                         }
                       ],
                       "name": "Reward"
                     }
                   },
                   "root_key": "0x54dcbd53",
-                  "ty": 13
+                  "ty": 16
                 }
               },
               "name": "rewards"
@@ -565,22 +680,22 @@
                 "root": {
                   "layout": {
                     "leaf": {
-                      "key": "0x61ff22c2",
+                      "key": "0xe818425c",
                       "ty": 12
                     }
                   },
-                  "root_key": "0x61ff22c2",
-                  "ty": 17
+                  "root_key": "0xe818425c",
+                  "ty": 20
                 }
               },
-              "name": "reward_titles"
+              "name": "reward_ids"
             }
           ],
           "name": "LoybitsManager"
         }
       },
       "root_key": "0x00000000",
-      "ty": 22
+      "ty": 25
     }
   },
   "types": [
@@ -809,15 +924,15 @@
         "params": [
           {
             "name": "K",
-            "type": 12
+            "type": 2
           },
           {
             "name": "V",
-            "type": 14
+            "type": 12
           },
           {
             "name": "KeyType",
-            "type": 15
+            "type": 14
           }
         ],
         "path": [
@@ -832,42 +947,6 @@
       "id": 14,
       "type": {
         "def": {
-          "composite": {
-            "fields": [
-              {
-                "name": "acquirer",
-                "type": 2,
-                "typeName": "AccountId"
-              },
-              {
-                "name": "title",
-                "type": 12,
-                "typeName": "String"
-              },
-              {
-                "name": "category",
-                "type": 12,
-                "typeName": "String"
-              },
-              {
-                "name": "cost",
-                "type": 0,
-                "typeName": "u32"
-              }
-            ]
-          }
-        },
-        "path": [
-          "loybits_manager",
-          "loybit_manager",
-          "Reward"
-        ]
-      }
-    },
-    {
-      "id": 15,
-      "type": {
-        "def": {
           "composite": {}
         },
         "params": [
@@ -877,7 +956,7 @@
           },
           {
             "name": "R",
-            "type": 16
+            "type": 15
           }
         ],
         "path": [
@@ -888,7 +967,7 @@
       }
     },
     {
-      "id": 16,
+      "id": 15,
       "type": {
         "def": {
           "composite": {}
@@ -907,28 +986,19 @@
       }
     },
     {
-      "id": 17,
+      "id": 16,
       "type": {
         "def": {
-          "composite": {
-            "fields": [
-              {
-                "name": "len",
-                "type": 20,
-                "typeName": "Lazy<u32, KeyType>"
-              },
-              {
-                "name": "elements",
-                "type": 21,
-                "typeName": "Mapping<u32, V, KeyType>"
-              }
-            ]
-          }
+          "composite": {}
         },
         "params": [
           {
-            "name": "V",
+            "name": "K",
             "type": 12
+          },
+          {
+            "name": "V",
+            "type": 17
           },
           {
             "name": "KeyType",
@@ -938,8 +1008,54 @@
         "path": [
           "ink_storage",
           "lazy",
-          "vec",
-          "StorageVec"
+          "mapping",
+          "Mapping"
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "type": {
+        "def": {
+          "composite": {
+            "fields": [
+              {
+                "name": "acquirer",
+                "type": 2,
+                "typeName": "AccountId"
+              },
+              {
+                "name": "title",
+                "type": 12,
+                "typeName": "String"
+              },
+              {
+                "name": "description",
+                "type": 12,
+                "typeName": "String"
+              },
+              {
+                "name": "category",
+                "type": 12,
+                "typeName": "String"
+              },
+              {
+                "name": "cost",
+                "type": 0,
+                "typeName": "u32"
+              },
+              {
+                "name": "id",
+                "type": 12,
+                "typeName": "String"
+              }
+            ]
+          }
+        },
+        "path": [
+          "loybits_manager",
+          "loybit_manager",
+          "Reward"
         ]
       }
     },
@@ -989,6 +1105,85 @@
       "id": 20,
       "type": {
         "def": {
+          "composite": {
+            "fields": [
+              {
+                "name": "len",
+                "type": 23,
+                "typeName": "Lazy<u32, KeyType>"
+              },
+              {
+                "name": "elements",
+                "type": 24,
+                "typeName": "Mapping<u32, V, KeyType>"
+              }
+            ]
+          }
+        },
+        "params": [
+          {
+            "name": "V",
+            "type": 12
+          },
+          {
+            "name": "KeyType",
+            "type": 21
+          }
+        ],
+        "path": [
+          "ink_storage",
+          "lazy",
+          "vec",
+          "StorageVec"
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "type": {
+        "def": {
+          "composite": {}
+        },
+        "params": [
+          {
+            "name": "L",
+            "type": 6
+          },
+          {
+            "name": "R",
+            "type": 22
+          }
+        ],
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ResolverKey"
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "type": {
+        "def": {
+          "composite": {}
+        },
+        "params": [
+          {
+            "name": "ParentKey",
+            "type": 8
+          }
+        ],
+        "path": [
+          "ink_storage_traits",
+          "impls",
+          "ManualKey"
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "type": {
+        "def": {
           "composite": {}
         },
         "params": [
@@ -998,7 +1193,7 @@
           },
           {
             "name": "KeyType",
-            "type": 18
+            "type": 21
           }
         ],
         "path": [
@@ -1009,7 +1204,7 @@
       }
     },
     {
-      "id": 21,
+      "id": 24,
       "type": {
         "def": {
           "composite": {}
@@ -1025,7 +1220,7 @@
           },
           {
             "name": "KeyType",
-            "type": 18
+            "type": 21
           }
         ],
         "path": [
@@ -1037,7 +1232,7 @@
       }
     },
     {
-      "id": 22,
+      "id": 25,
       "type": {
         "def": {
           "composite": {
@@ -1053,14 +1248,19 @@
                 "typeName": "<Mapping<AccountId, u32> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<3415002516u32,\n()>,>>::Type"
               },
               {
-                "name": "rewards",
+                "name": "acquirer_names",
                 "type": 13,
+                "typeName": "<Mapping<AccountId, String> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<1136928786u32,\n()>,>>::Type"
+              },
+              {
+                "name": "rewards",
+                "type": 16,
                 "typeName": "<Mapping<String, Reward> as::ink::storage::traits::\nAutoStorableHint<::ink::storage::traits::ManualKey<1404951636u32,\n()>,>>::Type"
               },
               {
-                "name": "reward_titles",
-                "type": 17,
-                "typeName": "<StorageVec<String> as::ink::storage::traits::AutoStorableHint<\n::ink::storage::traits::ManualKey<3257073505u32, ()>,>>::Type"
+                "name": "reward_ids",
+                "type": 20,
+                "typeName": "<StorageVec<String> as::ink::storage::traits::AutoStorableHint<\n::ink::storage::traits::ManualKey<1547835624u32, ()>,>>::Type"
               }
             ]
           }
@@ -1073,7 +1273,7 @@
       }
     },
     {
-      "id": 23,
+      "id": 26,
       "type": {
         "def": {
           "variant": {
@@ -1090,7 +1290,7 @@
               {
                 "fields": [
                   {
-                    "type": 24
+                    "type": 27
                   }
                 ],
                 "index": 1,
@@ -1106,7 +1306,7 @@
           },
           {
             "name": "E",
-            "type": 24
+            "type": 27
           }
         ],
         "path": [
@@ -1115,7 +1315,7 @@
       }
     },
     {
-      "id": 24,
+      "id": 27,
       "type": {
         "def": {
           "variant": {
@@ -1134,7 +1334,7 @@
       }
     },
     {
-      "id": 25,
+      "id": 28,
       "type": {
         "def": {
           "variant": {
@@ -1142,7 +1342,7 @@
               {
                 "fields": [
                   {
-                    "type": 26
+                    "type": 29
                   }
                 ],
                 "index": 0,
@@ -1151,7 +1351,7 @@
               {
                 "fields": [
                   {
-                    "type": 24
+                    "type": 27
                   }
                 ],
                 "index": 1,
@@ -1163,11 +1363,11 @@
         "params": [
           {
             "name": "T",
-            "type": 26
+            "type": 29
           },
           {
             "name": "E",
-            "type": 24
+            "type": 27
           }
         ],
         "path": [
@@ -1176,7 +1376,7 @@
       }
     },
     {
-      "id": 26,
+      "id": 29,
       "type": {
         "def": {
           "variant": {
@@ -1209,7 +1409,7 @@
       }
     },
     {
-      "id": 27,
+      "id": 30,
       "type": {
         "def": {
           "variant": {
@@ -1217,7 +1417,7 @@
               {
                 "fields": [
                   {
-                    "type": 28
+                    "type": 31
                   }
                 ],
                 "index": 0,
@@ -1226,7 +1426,7 @@
               {
                 "fields": [
                   {
-                    "type": 24
+                    "type": 27
                   }
                 ],
                 "index": 1,
@@ -1238,11 +1438,11 @@
         "params": [
           {
             "name": "T",
-            "type": 28
+            "type": 31
           },
           {
             "name": "E",
-            "type": 24
+            "type": 27
           }
         ],
         "path": [
@@ -1251,17 +1451,68 @@
       }
     },
     {
-      "id": 28,
+      "id": 31,
       "type": {
         "def": {
           "sequence": {
-            "type": 14
+            "type": 32
           }
         }
       }
     },
     {
-      "id": 29,
+      "id": 32,
+      "type": {
+        "def": {
+          "composite": {
+            "fields": [
+              {
+                "name": "acquirer_address",
+                "type": 2,
+                "typeName": "AccountId"
+              },
+              {
+                "name": "acquirer_name",
+                "type": 12,
+                "typeName": "String"
+              },
+              {
+                "name": "title",
+                "type": 12,
+                "typeName": "String"
+              },
+              {
+                "name": "description",
+                "type": 12,
+                "typeName": "String"
+              },
+              {
+                "name": "category",
+                "type": 12,
+                "typeName": "String"
+              },
+              {
+                "name": "cost",
+                "type": 0,
+                "typeName": "u32"
+              },
+              {
+                "name": "id",
+                "type": 12,
+                "typeName": "String"
+              }
+            ]
+          }
+        },
+        "path": [
+          "loybits_manager",
+          "loybit_manager",
+          "ReturnReward"
+        ]
+      }
+    },
+    {
+      "id": 33,
       "type": {
         "def": {
           "primitive": "u128"
@@ -1269,7 +1520,7 @@
       }
     },
     {
-      "id": 30,
+      "id": 34,
       "type": {
         "def": {
           "composite": {
@@ -1289,7 +1540,7 @@
       }
     },
     {
-      "id": 31,
+      "id": 35,
       "type": {
         "def": {
           "primitive": "u64"
@@ -1297,7 +1548,7 @@
       }
     },
     {
-      "id": 32,
+      "id": 36,
       "type": {
         "def": {
           "variant": {}

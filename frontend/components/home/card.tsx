@@ -21,12 +21,12 @@ export default function Card({
         large ? "md:col-span-2" : ""
       }`}
     >
-      <div className="flex h-[13rem] items-center justify-center">{demo}</div>
+      <div className="flex h-[12rem] items-center justify-center">{demo}</div>
       <div className="mx-auto max-w-lg text-center">
         <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-xl font-bold text-transparent [text-wrap:balance] md:text-3xl md:font-normal">
           {title}
         </h2>
-        <div className="prose-sm mt-3 leading-normal text-gray-500 [text-wrap:balance] md:prose px-4">
+        <div className="prose-sm mt-3 leading-normal text-gray-500 [text-wrap:balance] md:prose">
           <ReactMarkdown
             components={{
               a: ({ node, ...props }) => (
