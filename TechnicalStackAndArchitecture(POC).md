@@ -21,8 +21,8 @@ Loybits is an innovative Proof of Concept (POC) developed during the intense 3-d
 
 ### 1.2 React
 
-- **Core UI Framework
-- **Key Utilizations
+- **Core UI Framework**
+- **Key Utilizations**
   - Component-Based Architecture
   - Virtual DOM
   - Hooks
@@ -42,47 +42,47 @@ Loybits is an innovative Proof of Concept (POC) developed during the intense 3-d
 
 The following Polkadot libraries are crucial for integrating blockchain functionality into Loybits:
 
-- **@polkadot/api (^11.3.1)**: 
+- **@polkadot/api**: 
   - **Purpose**: Provides a powerful interface to interact with Polkadot nodes.
   - **Usage in Loybits**: Used to query blockchain state, such as user balances and reward availability, and to submit transactions for claiming rewards or transferring loyalty points.
 
-- **@polkadot/api-contract (^11.3.1)**:
+- **@polkadot/api-contract**:
   - **Purpose**: Extends the base API to work with smart contracts on Polkadot.
   - **Usage in Loybits**: Facilitates interaction with the Loybits Manager Contract, allowing for contract calls to add users, register payments, or add rewards.
 
-- **@polkadot/extension-dapp (^0.47.5) and @polkadot/extension-inject (^0.47.5)**:
+- **@polkadot/extension-dapp and @polkadot/extension-inject**:
   - **Purpose**: Enables integration with browser extension wallets.
-  - **Usage in Loybits**: Allows users to connect their SubWallet or other compatible wallets to the dApp, enabling secure transaction signing and account management.
+  - **Usage in Loybits**: Allows users to connect their SubWallet or other compatible wallets to the dApp.
 
-- **@polkadot/keyring (^12.6.2)**:
+- **@polkadot/keyring**:
   - **Purpose**: Provides cryptographic key management utilities.
-  - **Usage in Loybits**: Used for handling public/private key pairs and generating addresses, crucial for secure blockchain interactions.
+  - **Usage in Loybits**: Used for handling public/private key pairs and generating addresses.
 
-- **@polkadot/types (^11.3.1)**:
+- **@polkadot/types**:
   - **Purpose**: Defines the base types for Polkadot's metadata.
   - **Usage in Loybits**: Ensures correct typing and encoding of data when interacting with the blockchain, preventing errors in data interpretation.
 
-- **@polkadot/util (^12.6.2) and @polkadot/util-crypto (^12.6.2)**:
+- **@polkadot/util and @polkadot/util-crypto**:
   - **Purpose**: Offer a collection of useful utilities for blockchain operations.
-  - **Usage in Loybits**: Employed for various cryptographic operations, data conversion, and other utility functions throughout the application.
+  - **Usage in Loybits**: Employed for various cryptographic operations.
 
 ### 1.5 use-inkathon Hook
 
-- **Library**: @scio-labs/use-inkathon (^0.10.0)
+- **Library**: @scio-labs/use-inkathon
 - **Purpose and Function**:
   The use-inkathon hook simplifies the integration of ink! smart contracts with React applications. In Loybits, it's used extensively to manage blockchain interactions:
 
-  - `api`: Provides a configured instance of the Polkadot API, used for all low-level blockchain interactions.
+  - `api`: Provides a configured instance of the Polkadot API.
   
-  - `activeChain` and `switchActiveChain`: Manage the currently connected blockchain network. This allows Loybits to potentially support multiple networks in the future, such as testnet and mainnet.
+  - `activeChain` and `switchActiveChain`: Manage the currently connected blockchain network.
   
   - `connect`, `disconnect`, and `isConnecting`: Handle wallet connection states, providing a smooth user experience when connecting or disconnecting their blockchain wallet.
   
   - `activeAccount`, `accounts`, and `setActiveAccount`: Manage user accounts, allowing users to switch between multiple accounts if they have them.
   
   - `contractTx`, `contractQuery`, and `decodeOutput`: Simplify the process of interacting with the Loybits Manager Contract, handling the complexities of contract calls and response decoding.
-
-  These hooks abstract away much of the complexity of blockchain interactions, allowing the Loybits team to focus on building the core loyalty program logic rather than dealing with low-level blockchain operations.
+ 
+  This library came in the boilerplate recomended in the NERDCONF Workshop for this hackathon.
 
 ## 2. Backend
 
@@ -99,7 +99,7 @@ The following Polkadot libraries are crucial for integrating blockchain function
   
   - **Environment Variable Handling**: Secure handling of environment variables for sensitive information like API keys is built-in, crucial for managing connections to services like OpenAI and Pinecone.
 
-  In Loybits, API routes are used to handle AI-related requests, process blockchain data, and serve as an intermediary between the frontend and external services.
+  In Loybits, API routes are used to handle AI-related requests, and serve as an intermediary between the frontend and external AI services.
 
 ### 2.2 LangChain
 
@@ -177,9 +177,11 @@ The following Polkadot libraries are crucial for integrating blockchain function
   
   - **Transaction Handling**: Manages the logic for point transfers, reward claims, and other loyalty program transactions.
   
-  - **Business Logic**: Implements the rules of the loyalty program, such as point issuance rates, reward costs, and any time-based or conditional logic.
+  - **Business Logic**: Implements the rules of the loyalty program, such as point rates and reward costs.
   
   - **Event Emission**: Emits events for important actions (e.g., point transfers, reward claims) which can be used to update the frontend in real-time and for off-chain analytics.
+
+    This manager should integrate with a token standard in the future, providing further fucionlalities to be carried in blockchain, like the origin business of the tokens getting a comision and visualization of this tokens in user wallets. For this PoC, only the main logic was designed in the contract.
 
 ### 3.3 SubWallet
 
@@ -218,13 +220,13 @@ The integration of these diverse technologies creates a seamless user experience
 4. **Data Storage and Retrieval**:
    - Blockchain data (user balances, reward details) is stored on-chain in the Loybits Manager Contract.
    - AI-related data (document embeddings) is stored in Pinecone for quick retrieval.
-   - The Next.js application may use local storage or cookies for temporary data storage, such as user preferences or session information.
+   - The Next.js application uses local storage for temporary data storage, such as SubWallet session information.
 
 ## 5. Development and Deployment
 
 - **Local Development**: 
   - Next.js development server is used for local development, allowing developers to see real-time changes as they code.
-  - Smart contract development is done using the ink! framework, with local testing environments mimicking the AlephZero testnet.
+  - Smart contract development is done using the ink! framework.
 
 - **Deployment**: 
   - Vercel is used for deploying both the frontend and serverless backend functions. This provides:
@@ -294,14 +296,14 @@ As a Proof of Concept developed in just 3 days, Loybits has significant potentia
    - Consider sharding or other scalability solutions on the blockchain side to handle a larger number of users and transactions.
 
 9. **Regulatory Compliance**:
-   - Research and implement necessary measures to comply with relevant financial and data protection regulations.
+   - Research and implement necessary measures to comply with relevant financial and data protection regulations, to make Loybits a viable solution in our economy.
 
 10. **Cross-chain Functionality**:
     - Explore Polkadot's cross-chain capabilities to potentially integrate with other blockchain networks or parachain-based loyalty programs.
 
 ## Conclusion
 
-The Loybits project, despite being a Proof of Concept developed in just 3 days during the NERDATHON Polkadot hackathon, demonstrates an innovative approach to loyalty programs. By combining blockchain technology with AI-powered assistance, it showcases the potential for creating decentralized, intelligent loyalty platforms tailored for small and medium-sized businesses.
+The Loybits project, despite being a Proof of Concept developed during the NERDATHON Polkadot hackathon, demonstrates an innovative approach to loyalty programs. By combining blockchain technology with AI-powered assistance, it showcases the potential for creating decentralized, intelligent loyalty platforms tailored for small and medium-sized businesses.
 
 The use of Next.js, React, and Tailwind CSS for the frontend, coupled with Polkadot's blockchain infrastructure and OpenAI's language models, creates a powerful and flexible foundation. The integration of these technologies allows for a user-friendly interface, secure transaction handling, and intelligent, context-aware interactions.
 
