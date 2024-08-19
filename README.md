@@ -1,5 +1,11 @@
 ![banner](https://raw.githubusercontent.com/ivandda/loybits/main/frontend/public/banner.png)
+
+<a href="https://twitter.com/LoybitsToken"><img align="left" src="https://i.ibb.co/jRmrJbQ/free-twitter-logo-icon-2429-thumb.png" alt="X Account" width="30px"/></a>
+<a href="https://taikai.network/nerdconf/hackathons/nerdathon/projects/clzx9vti00n6dwm0156z0xxrw/idea"><img align="left" src="https://i.ibb.co/QFVJzfQ/images.jpg" alt="Taikai" width="30px"/></a>
+</br>
+
 # Loybits: Revolutionizing Customer Loyalty through Polkadot Blockchain and Artificial Intelligence
+
 > NERDCONF Hackathon with Polkadot
 
 ## Useful links
