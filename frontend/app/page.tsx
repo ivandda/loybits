@@ -70,7 +70,7 @@ export default async function Home() {
         >
           <a
             className="group flex items-center justify-center space-x-2 rounded-full border border-pink-500 bg-pink-600 px-5 py-2 text-sm text-white transition-colors hover:border-pink-900"
-            href={"/AI"}
+            href={"/AI/info"}
             rel="noopener noreferrer"
           >
             <Image
