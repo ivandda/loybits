@@ -7,6 +7,7 @@ import fetchRewards from "@/lib/hooks/use-rewards";
 import Image from "next/image";
 import Card from "@/components/home/card";
 import ComponentGrid from "@/components/home/component-grid";
+import fetchRewardClaim from "@/lib/hooks/use-claim";
 
 export default function RewardList() {
   const {api, activeAccount} = useInkathon()
@@ -15,6 +16,7 @@ export default function RewardList() {
     title: string,
     description: string,
     cost: number,
+    id: string,
     demo: any
   }[]>([]);
 
@@ -25,6 +27,7 @@ export default function RewardList() {
           title: string,
           description: string,
           cost: number,
+          id: string,
           demo: any
         }[] = [];
         res.map(({ acquirerAddress, acquirerName, title, description, category, cost, id}:
@@ -36,7 +39,7 @@ export default function RewardList() {
                      cost: number,
                      id: string
                    }) => {
-          rewards.push({title, description, cost,
+          rewards.push({title, description, cost, id,
             demo: (<div className="flex items-center justify-center space-x-20">
               <Image alt={category} src={`/${category}.webp`} width={180} height={180} />
             </div>)})
@@ -49,12 +52,13 @@ export default function RewardList() {
 
   return (
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {rewards.map(({ title, description, demo, cost }) => (
+        {rewards.map(({ title, description, demo, cost , id}) => (
           <Card
             key={title}
             title={title}
             description={description}
             cost={cost}
+            onClaim={() => fetchRewardClaim(api, activeAccount, contract, id)}
             demo={
               title === "Beautiful, reusable components" ? (
                 <ComponentGrid />

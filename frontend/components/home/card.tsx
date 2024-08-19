@@ -7,12 +7,14 @@ export default function Card({
   description,
   demo,
   cost,
+  onClaim,
   large,
 }: {
   title: string;
   description: string;
   demo: ReactNode;
   cost: number;
+  onClaim: () => {},
   large?: boolean;
 }) {
   return (
@@ -60,13 +62,13 @@ export default function Card({
             />
           </div>
 
-          <a
+          <button
             className="group flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:border-transparent hover:bg-pink-600"
-            href={"/user_view"}
+            onClick={onClaim}
             rel="noopener noreferrer"
           >
             <p> Claim </p>
-          </a>
+          </button>
         </div>
       </div>
     </div>
