@@ -1,4 +1,13 @@
+![banner](https://raw.githubusercontent.com/ivandda/loybits/main/frontend/public/banner.png)
 # Loybits: Revolutionizing Customer Loyalty through Polkadot Blockchain and Artificial Intelligence
+> NERDCONF Hackathon with Polkadot
+
+## Useful links
+1. [Landing Page](https://loybitstoken.wixsite.com/home)
+2. [Problem & Solution Detailed Description](#introduction)
+3. [Technological Description](https://github.com/ivandda/loybits/blob/main/TechnicalStackAndArchitecture(POC).md)
+4. [Demo](https://loybits.vercel.app/)
+5. [Download and running instructions](https://github.com/ivandda/loybits/blob/main/RunningInstructions.md)
 
 ## Introduction
 
