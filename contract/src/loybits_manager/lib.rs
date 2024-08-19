@@ -23,13 +23,18 @@ mod loybit_manager {
     pub struct NewAcquirer {
         acquirer: AccountId,
         tokens_available: u32,
+        name: String
     }
 
     #[ink(event)]
     pub struct NewReward {
         acquirer: AccountId,
+        business: String,
         cost: u32,
-        name: String
+        title: String,
+        description: String,
+        category: String,
+        id: String
     }
 
     #[ink(event)]
@@ -48,16 +53,31 @@ mod loybit_manager {
     pub struct Reward {
         acquirer: AccountId,
         title: String,
+        description: String,
         category: String,
-        cost: u32
+        cost: u32,
+        id: String
+    }
+
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
+    #[derive(Clone)]
+    pub struct ReturnReward {
+        acquirer_address: AccountId,
+        acquirer_name: String,
+        title: String,
+        description: String,
+        category: String,
+        cost: u32,
+        id: String
     }
 
     #[ink(storage)]
     pub struct LoybitsManager {
         user_balances: Mapping<AccountId, u32>,
         acquirer_balances: Mapping<AccountId, u32>,
+        acquirer_names: Mapping<AccountId, String>,
         rewards: Mapping<String, Reward>,
-        reward_titles: StorageVec<String>
+        reward_ids: StorageVec<String>
     }
 
     impl LoybitsManager {
@@ -67,8 +87,9 @@ mod loybit_manager {
             Self {
                 user_balances: Mapping::default(),
                 acquirer_balances: Mapping::default(),
+                acquirer_names: Mapping::default(),
                 rewards: Mapping::default(),
-                reward_titles: Default::default()
+                reward_ids: Default::default()
             }
         }
 
@@ -88,10 +109,19 @@ mod loybit_manager {
         }
 
         #[ink(message)]
-        pub fn getRewards(&self) -> Vec<Reward> {
+        pub fn get_rewards(&self) -> Vec<ReturnReward> {
             let mut rewards = Vec::new();
-            for i in 0..self.reward_titles.len(){
-                rewards.push(self.rewards.get(self.reward_titles.get(i).expect("Unexpected rewards length").clone()).expect("Unexpected reward title"))
+            for i in 0..self.reward_ids.len(){
+                let reward = self.rewards.get(self.reward_ids.get(i).expect("Unexpected rewards length").clone()).expect("Unexpected reward title");
+                rewards.push(ReturnReward {
+                    acquirer_address: reward.acquirer,
+                    acquirer_name: self.acquirer_names.get(reward.acquirer).clone().expect("Acquirer name should be registered"),
+                    title: reward.title,
+                    description: reward.description,
+                    category: reward.category,
+                    cost: reward.cost,
+                    id: reward.id
+                })
             }
             rewards
         }
@@ -109,33 +139,41 @@ mod loybit_manager {
 
         /// Creates new acquirer
         #[ink(message)]
-        pub fn add_acquirer(&mut self, tokens: u32) {
+        pub fn add_acquirer(&mut self, tokens: u32, name: String) {
             let caller = self.env().caller();
             self.acquirer_balances.insert(caller, &tokens);
+            self.acquirer_names.insert(caller, &name);
 
             self.env().emit_event(NewAcquirer {
                 acquirer: caller,
-                tokens_available: tokens
+                tokens_available: tokens,
+                name: name.clone()
             });
         }
 
         /// Adds new reward of acquirer
         #[ink(message)]
-        pub fn add_reward(&mut self, tokens: u32, name: String, category: String) {
+        pub fn add_reward(&mut self, tokens: u32, name: String, category: String, description: String, id: String) {
             let caller = self.env().caller();
             assert!(self.acquirer_balances.contains(caller), "Caller must be an acquirer");
-            self.reward_titles.push(&name.clone());
-            self.rewards.insert(name.clone(), {&Reward {
+            self.reward_ids.push(&id.clone());
+            self.rewards.insert(id.clone(), {&Reward {
                 acquirer: caller,
                 title: name.clone(),
                 cost: tokens,
-                category: category.clone()
+                category: category.clone(),
+                description: description.clone(),
+                id: id.clone()
             }});
 
             self.env().emit_event(NewReward {
                 acquirer: caller,
+                business: self.acquirer_names.get(caller).clone().expect("Acquirer name should be registered"),
                 cost: tokens,
-                name: name.clone()
+                title: name.clone(),
+                category: category.clone(),
+                description: description.clone(),
+                id: id.clone()
             });
         }
 

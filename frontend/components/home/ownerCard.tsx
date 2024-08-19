@@ -2,26 +2,20 @@ import { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 
-export default function Card({
+export default function OwnerCard({
   title,
   description,
   demo,
-  cost,
-  onClaim,
-  large,
+  cost
 }: {
   title: string;
   description: string;
   demo: ReactNode;
   cost: number;
-  onClaim: () => {},
-  large?: boolean;
 }) {
   return (
     <div
-      className={`relative col-span-1 h-96 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md px-4${
-        large ? "md:col-span-2" : ""
-      }`}
+      className={`relative col-span-1 h-96 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md px-4`}
     >
       <div className="flex h-[12rem] items-center justify-center">{demo}</div>
       <div className="mx-auto max-w-lg text-center">
@@ -61,14 +55,17 @@ export default function Card({
               height="30"
             />
           </div>
+          <div>
 
-          <button
-            className="group flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:border-transparent hover:bg-pink-600"
-            onClick={onClaim}
-            rel="noopener noreferrer"
-          >
-            <p> Claim </p>
-          </button>
+          </div>
+
+          {/*<button*/}
+          {/*  className="group flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-2 text-sm text-white transition-colors hover:border-transparent hover:bg-pink-600"*/}
+          {/*  onClick={onClaim}*/}
+          {/*  rel="noopener noreferrer"*/}
+          {/*>*/}
+          {/*  <p> Claim </p>*/}
+          {/*</button>*/}
         </div>
       </div>
     </div>

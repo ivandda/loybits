@@ -3,21 +3,37 @@
 import Image from "next/image";
 import Link from "next/link";
 import useScroll from "@/lib/hooks/use-scroll";
-import { useSignInModal } from "./sign-in-modal";
-import UserDropdown from "./user-dropdown";
-import { Session } from "next-auth";
+import {usePathname} from "next/navigation";
+import {ConnectButton} from "@/components/web3/connect-button";
 
-export default function NavBar({ session }: { session: Session | null }) {
-  const { SignInModal, setShowSignInModal } = useSignInModal();
+export default function NavBar() {
+  const pathname = usePathname()
   const scrolled = useScroll(50);
 
-  return (
+  return pathname === '/' ?
     <>
-      <SignInModal />
+      <div
+        className={`fixed top-0 w-full flex justify-center bg-white/0 z-30 transition-all`}
+      >
+        <div className="mx-5 flex h-36 max-w-screen-xl items-center justify-between w-full text-white">
+          <Link href="/" className="flex items-center font-display text-2xl">
+            <Image
+              src="/coin_logo.png"
+              alt="Logo"
+              width="80"
+              height="80"
+              className="mr-2 rounded-sm"
+            />
+            <p className={"text-6xl"}>Loybits</p>
+          </Link>
+        </div>
+      </div>
+    </> :
+    <>
       <div
         className={`fixed top-0 w-full flex justify-center ${
           scrolled
-            ? "border-b border-gray-200 bg-white/50 backdrop-blur-xl"
+            ? "border-b border-violet-700 bg-violet-900/50 backdrop-blur-lg"
             : "bg-white/0"
         } z-30 transition-all`}
       >
@@ -26,26 +42,17 @@ export default function NavBar({ session }: { session: Session | null }) {
             <Image
               src="/coin_logo.png"
               alt="Logo"
-              width="30"
-              height="30"
+              width="40"
+              height="40"
               className="mr-2 rounded-sm"
             />
-            <p>Loybits</p>
+            <p className={"text-2xl"}>Loybits</p>
           </Link>
-          {/*<div>*/}
-          {/*  {session ? (*/}
-          {/*    <UserDropdown session={session} />*/}
-          {/*  ) : (*/}
-          {/*    <button*/}
-          {/*      className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"*/}
-          {/*      onClick={() => setShowSignInModal(true)}*/}
-          {/*    >*/}
-          {/*      Sign In*/}
-          {/*    </button>*/}
-          {/*  )}*/}
-          {/*</div>*/}
+          {pathname === '/AI'? <></> :
+          <div>
+            <ConnectButton/>
+          </div>}
         </div>
       </div>
-    </>
-  );
+    </>;
 }
