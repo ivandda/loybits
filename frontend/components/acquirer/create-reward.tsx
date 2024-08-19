@@ -74,7 +74,7 @@ export default function CreateReward({
           />
 
           <label className={'font-bold'}> Category </label>
-          <select id="categories" class="border rounded-2xl p-2 border-violet-600 mb-2"
+          <select id="categories" className="border rounded-2xl p-2 border-violet-600 mb-2"
            value={category} onInput={e => setCategory((e.target as HTMLInputElement).value)}
           >
             <option selected>Choose a Category</option>

@@ -39,6 +39,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
 import fetchLoybitsBalance from "@/lib/hooks/use-balance";
 import {ContractIds} from "@/deployments/deployments";
 import {usePathname} from "next/navigation";
+import CreateAccount from "@/components/acquirer/create-account";
 
 
 export interface ConnectButtonProps {}
@@ -65,6 +66,7 @@ export const ConnectButton: FC<ConnectButtonProps> = () => {
   const pathname = usePathname()
   const { contract, address: contractAddress } = useRegisteredContract(ContractIds.Loybits)
   const [loybitsBalance, setLoybitsBalance] = useState(null);
+  const [openCreateAccount, setOpenCreateAccount] = useState(false);
 
   // Sort installed wallets first
   const [browserWallets] = useState([
@@ -133,6 +135,7 @@ export const ConnectButton: FC<ConnectButtonProps> = () => {
   return (
     <div className="flex select-none flex-wrap items-stretch justify-center gap-4">
       {/* Account Name, Address, and AZERO.ID-Domain (if assigned) */}
+      <CreateAccount showModal={openCreateAccount} setShowModal={setOpenCreateAccount} />
       <DropdownMenu>
         <DropdownMenuTrigger
           asChild
@@ -242,6 +245,14 @@ export const ConnectButton: FC<ConnectButtonProps> = () => {
                  height="30"
           />
         </div>
+      )}
+
+      {loybitsBalance == null && activeAccount && pathname === '/acquirer_view' && (
+        <button className="flex min-w-[10rem] items-center justify-center gap-2 rounded-2xl border bg-pink-400/70 px-4 py-3 font-mono text-sm font-bold text-black hover:bg-pink-400/90"
+                onClick={() => setOpenCreateAccount(true)}
+        >
+          Create Business Account
+        </button>
       )}
 
 
