@@ -11,7 +11,7 @@ export default function AcquirerMain() {
   return (
     <>
       <Payment showModal={openSimulator} setShowModal={setOpenSimulator}/>
-      <div className="z-10 w-full max-w-xl px-5 xl:px-0">
+      <div className="z-10 w-full max-w-2xl px-5 xl:px-0">
         <h1 className="animate-fade-up bg-gradient-to-br from-white to-stone-400 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
           My Rewards
@@ -49,67 +49,23 @@ export default function AcquirerMain() {
               Add Reward
             </p>
           </button>
+          <a
+            className="group flex items-center justify-center space-x-2 rounded-full border border-pink-500 bg-pink-600 px-5 py-2 text-sm text-white transition-colors hover:border-pink-900"
+            href="/AI/business"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/MrLoy.PNG"
+              alt="Logo"
+              width="30"
+              height="30"
+              className="mr-2 rounded-sm"
+            />
+            <p>Let Mr Loy help you!</p>
+          </a>
         </div>
       </div>
       <MyRewardList/>
     </>
   );
 }
-
-const rewards = [
-  {
-    title: "25% Discount",
-    description:
-      "This is a 25% discount at a small business in Belgrano",
-    cost: 10000,
-    demo: (
-      <div className="flex items-center justify-center space-x-20">
-        <Image alt="Discount" src="/discount.png" width={180} height={180} />
-      </div>
-    ),
-  },
-  {
-    title: "10k pesos Giftcard",
-    description:
-      "This is a giftcard 10k in a small business in Palermo",
-    cost: 10000,
-    demo: (
-      <div className="flex items-center justify-center space-x-20">
-        <Image alt="Giftcard" src="/gift.webp" width={180} height={180} />
-      </div>
-    ),
-  },
-  {
-    title: "2 course Meal",
-    description:
-      "This is a a dinner at a beatiful dinner in Puerto Madero",
-    cost: 50000,
-    demo: (
-      <div className="flex items-center justify-center space-x-20">
-        <Image alt="gastronomy" src="/gastronomy.webp" width={180} height={180} />
-      </div>
-    ),
-  },
-  {
-    title: "Malbec Wine",
-    description:
-      "Take one of our nicest wines coming to our Bodega.",
-    cost: 20000,
-    demo: (
-      <div className="flex items-center justify-center space-x-20">
-        <Image alt="beverage" src="/beverage.png" width={180} height={180} />
-      </div>
-    ),
-  },
-  {
-    title: "Weekend trip",
-    description:
-      "Take a 2 day trip to our hotel in the small town of Jofre",
-    cost: 400000,
-    demo: (
-      <div className="flex items-center justify-center space-x-20">
-        <Image alt="trip" src="/trip.webp" width={180} height={180} />
-      </div>
-    ),
-  },
-];
