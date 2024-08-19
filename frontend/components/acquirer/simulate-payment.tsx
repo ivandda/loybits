@@ -65,7 +65,7 @@ export default function Payment({
           <p>Create</p>
         </button>
 
-        <p className={'font-thin text-sm'}> This is for Demo purposes, this fuctionality would be integrated to your current PoS system. </p>
+        <p className={'font-thin text-sm'}> This is for Demo purposes, this functionality would be integrated to your current PoS system. </p>
       </div>
 
     </Modal>

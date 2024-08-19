@@ -19,6 +19,7 @@
     "@langchain/openai": "^0.2.7",
     "@langchain/pinecone": "^0.0.9",
     "@next-auth/prisma-adapter": "^1.0.7",
+    "@nextui-org/select": "^2.2.5",
     "@pinecone-database/pinecone": "^3.0.0",
     "@polkadot/api": "^11.3.1",
     "@polkadot/api-contract": "^11.3.1",

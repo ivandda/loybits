@@ -6,7 +6,7 @@ export default async function fetchAddReward(
   tokens: number, name: string, category: string,
   description: string, id: string) {
   try {
-    const result = await contractTx(api, activeAccount.address, contract, `register_payment`, {},
+    const result = await contractTx(api, activeAccount.address, contract, `add_reward`, {},
       [tokens, name, category, description, id])
 
     if(result.extrinsicHash) {
