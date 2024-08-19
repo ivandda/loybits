@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 interface Message {
@@ -8,7 +8,7 @@ interface Message {
     content: string;
 }
 
-const AIChatbot: React.FC = () => {
+const InfoChatbot: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [inputText, setInputText] = useState('');
     const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -35,14 +35,23 @@ const AIChatbot: React.FC = () => {
         setMessages((prevMessages) => [...prevMessages, newUserMessage]);
         setInputText('');
 
-        // Your existing commented-out API call code...
+        try {
+            const response = await axios.post('/api/ai/generate', {
+                question: inputText,
+                promptType: 'info',
+                previousConversation: messages,
+            });
 
-        const newAIMessage: Message = {
-            role: 'ai',
-            content: 'Hello! How can I help you today?',
-        };
+            const newAIMessage: Message = {
+                role: 'ai',
+                content: response.data.answer,
+            };
 
-        setMessages((prevMessages) => [...prevMessages, newAIMessage]);
+            setMessages((prevMessages) => [...prevMessages, newAIMessage]);
+        } catch (error) {
+            console.error('Error sending message:', error);
+            // Handle error (e.g., show an error message to the user)
+        }
     };
 
     if (!isClient) {
@@ -75,7 +84,7 @@ const AIChatbot: React.FC = () => {
                     onChange={(e) => setInputText(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                     className="flex-grow p-2 text-base border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white/70"
-                    placeholder="Type your message here..."
+                    placeholder="Ask about Loybits..."
                 />
                 <button
                     onClick={handleSendMessage}
@@ -88,4 +97,4 @@ const AIChatbot: React.FC = () => {
     );
 };
 
-export default AIChatbot;
+export default InfoChatbot;

@@ -1,10 +1,10 @@
-import {NextRequest, NextResponse} from "next/server";
-import {PineconeStore} from "@langchain/pinecone";
-import {ChatOpenAI, OpenAIEmbeddings} from "@langchain/openai";
-import {Pinecone as PineconeClient} from "@pinecone-database/pinecone";
-import {PromptTemplate} from "@langchain/core/prompts";
-import {StringOutputParser} from "@langchain/core/output_parsers";
-import {createStuffDocumentsChain} from "langchain/chains/combine_documents";
+import { NextRequest, NextResponse } from "next/server";
+import { PineconeStore } from "@langchain/pinecone";
+import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
+import { Pinecone as PineconeClient } from "@pinecone-database/pinecone";
+import { PromptTemplate } from "@langchain/core/prompts";
+import { StringOutputParser } from "@langchain/core/output_parsers";
+import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 
 // Initialize Pinecone client
 const pinecone = new PineconeClient();
@@ -20,19 +20,48 @@ interface ConversationExchange {
     content: string;
 }
 
+// Define hardcoded prompts
+const prompts = {
+    info: `You are an AI assistant for Loybits, a loyalty platform for small and medium-sized businesses. Use the following pieces of context to answer questions about Loybits. If you don't know the answer, just say that you don't know, don't try to make up an answer. Keep the answer concise and informative.
+
+Previous conversation:
+{conversationHistory}
+
+Context information:
+{context}
+
+Question: {question}
+Helpful Answer:`,
+
+    business: `You are an AI assistant for Loybits, helping businesses with content generation, pricing decisions, product descriptions, and business ideas. Use the context provided, which includes data from other businesses using Loybits, to provide informed suggestions. If you don't have enough information, say so and provide general advice. Be creative but realistic in your suggestions.
+
+Previous conversation:
+{conversationHistory}
+
+Context information:
+{context}
+
+Question: {question}
+Helpful Answer:`
+};
+
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const {
             question,
-            customPrompt,
+            promptType,
             temperature = 0.7,
             maxTokens = 256,
-            previousConversation = [] as ConversationExchange[] // Explicitly type this
+            previousConversation = [] as ConversationExchange[]
         } = body;
 
         if (!question) {
-            return NextResponse.json({error: "Question is required"}, {status: 400});
+            return NextResponse.json({ error: "Question is required" }, { status: 400 });
+        }
+
+        if (!promptType || !['info', 'business'].includes(promptType)) {
+            return NextResponse.json({ error: "Valid promptType (info or business) is required" }, { status: 400 });
         }
 
         // Create PineconeStore instance
@@ -51,21 +80,7 @@ export async function POST(req: NextRequest) {
             maxTokens
         });
 
-        // Define prompt template
-        const defaultTemplate = `You are a helpful AI assistant. Use the following pieces of context to answer the question at the end.
-If you don't know the answer, just say that you don't know, don't try to make up an answer.
-Keep the answer concise and informative.
-
-Previous conversation:
-{conversationHistory}
-
-Context information:
-{context}
-
-Question: {question}
-Helpful Answer:`;
-
-        const promptTemplate = PromptTemplate.fromTemplate(customPrompt || defaultTemplate);
+        const promptTemplate = PromptTemplate.fromTemplate(prompts[promptType as keyof typeof prompts]);
 
         // Format previous conversation
         const conversationHistory = previousConversation.map((exchange: ConversationExchange) =>
@@ -89,9 +104,9 @@ Helpful Answer:`;
             conversationHistory
         });
 
-        return NextResponse.json({answer: response}, {status: 200});
+        return NextResponse.json({ answer: response }, { status: 200 });
     } catch (error) {
         console.error("Error generating response:", error);
-        return NextResponse.json({error: "Internal server error"}, {status: 500});
+        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }
 }
