@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
-import { PineconeStore } from "@langchain/pinecone";
-import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
-import { Pinecone as PineconeClient } from "@pinecone-database/pinecone";
-import { PromptTemplate } from "@langchain/core/prompts";
-import { StringOutputParser } from "@langchain/core/output_parsers";
-import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
+import {NextRequest, NextResponse} from "next/server";
+import {PineconeStore} from "@langchain/pinecone";
+import {ChatOpenAI, OpenAIEmbeddings} from "@langchain/openai";
+import {Pinecone as PineconeClient} from "@pinecone-database/pinecone";
+import {PromptTemplate} from "@langchain/core/prompts";
+import {StringOutputParser} from "@langchain/core/output_parsers";
+import {createStuffDocumentsChain} from "langchain/chains/combine_documents";
 
 // Initialize Pinecone client
 const pinecone = new PineconeClient();
@@ -57,11 +57,11 @@ export async function POST(req: NextRequest) {
         } = body;
 
         if (!question) {
-            return NextResponse.json({ error: "Question is required" }, { status: 400 });
+            return NextResponse.json({error: "Question is required"}, {status: 400});
         }
 
         if (!promptType || !['info', 'business'].includes(promptType)) {
-            return NextResponse.json({ error: "Valid promptType (info or business) is required" }, { status: 400 });
+            return NextResponse.json({error: "Valid promptType (info or business) is required"}, {status: 400});
         }
 
         // Create PineconeStore instance
@@ -104,9 +104,9 @@ export async function POST(req: NextRequest) {
             conversationHistory
         });
 
-        return NextResponse.json({ answer: response }, { status: 200 });
+        return NextResponse.json({answer: response}, {status: 200});
     } catch (error) {
         console.error("Error generating response:", error);
-        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+        return NextResponse.json({error: "Internal server error"}, {status: 500});
     }
 }

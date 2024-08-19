@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 
 interface Message {
@@ -50,12 +50,11 @@ const InfoChatbot: React.FC = () => {
             setMessages((prevMessages) => [...prevMessages, newAIMessage]);
         } catch (error) {
             console.error('Error sending message:', error);
-            // Handle error (e.g., show an error message to the user)
         }
     };
 
     if (!isClient) {
-        return null; // or a loading spinner
+        return null;
     }
 
     return (
