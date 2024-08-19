@@ -3,7 +3,7 @@
 import {contractQuery, decodeOutput } from "@scio-labs/use-inkathon";
 import toast from "react-hot-toast";
 
-export default async function fetchRewards(api, activeAccount, contract) {
+export default async function fetchRewards(api: any, activeAccount: any, contract: any) {
   try {
     const result = await contractQuery(api, activeAccount.address, contract, `get_rewards`)
     const { output, isError, decodedOutput } = decodeOutput(result, contract, `get_rewards`)

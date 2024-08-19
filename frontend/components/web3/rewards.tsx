@@ -11,13 +11,31 @@ import ComponentGrid from "@/components/home/component-grid";
 export default function RewardList() {
   const {api, activeAccount} = useInkathon()
   const { contract } = useRegisteredContract(ContractIds.Loybits)
-  const [rewards, setRewards]= useState([]);
+  const [rewards, setRewards]= useState<{
+    title: string,
+    description: string,
+    cost: number,
+    demo: any
+  }[]>([]);
 
   useEffect(() => {
     if(activeAccount) {
       fetchRewards(api, activeAccount, contract).then(res => {
-        let rewards = []
-        res.map(({ acquirerAddress, acquirerName, title, description, category, cost, id}) => {
+        let rewards: {
+          title: string,
+          description: string,
+          cost: number,
+          demo: any
+        }[] = [];
+        res.map(({ acquirerAddress, acquirerName, title, description, category, cost, id}:
+                   {acquirerAddress: string,
+                     acquirerName: string,
+                     title: string,
+                     description: string,
+                     category: string,
+                     cost: number,
+                     id: string
+                   }) => {
           rewards.push({title, description, cost,
             demo: (<div className="flex items-center justify-center space-x-20">
               <Image alt={category} src={`/${category}.webp`} width={180} height={180} />
@@ -31,7 +49,7 @@ export default function RewardList() {
 
   return (
       <div className="my-10 grid w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {rewards.map(({ title, description, demo, cost, large }) => (
+        {rewards.map(({ title, description, demo, cost }) => (
           <Card
             key={title}
             title={title}
@@ -44,7 +62,6 @@ export default function RewardList() {
                 demo
               )
             }
-            large={large}
           />
         ))}
       </div>

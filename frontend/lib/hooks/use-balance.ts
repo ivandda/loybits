@@ -3,7 +3,7 @@
 import {contractQuery, decodeOutput, contractTx } from "@scio-labs/use-inkathon";
 import toast from "react-hot-toast";
 
-export default async function fetchLoybitsBalance(api, activeAccount, contract, pathname) {
+export default async function fetchLoybitsBalance(api: any, activeAccount: any, contract: any, pathname: string) {
   try {
     let finalResult;
     const userType = pathname === '/user_view' ? 'user' : 'acquirer';
