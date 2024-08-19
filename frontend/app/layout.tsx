@@ -15,7 +15,7 @@ export const metadata = {
   description:
     "Loybits represents an innovative solution that effectively addresses the challenges faced by both SMEs and consumers in the realm of customer loyalty. By providing a platform that balances the needs of both groups",
     metadataBase: 'https://loybits.vercel.app/',
-    robots: env.isProduction ? 'all' : 'noindex,nofollow',
+    robots: process.env.NODE_ENV === 'production' ? 'all' : 'noindex,nofollow',
     openGraph: {
       type: 'website',
       locale: 'en',
