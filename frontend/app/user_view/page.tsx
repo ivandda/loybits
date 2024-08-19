@@ -1,3 +1,4 @@
+// @refresh reset
 import RewardList from "@/components/web3/rewards";
 
 export default async function UserMain() {
