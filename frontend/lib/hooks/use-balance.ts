@@ -1,5 +1,3 @@
-'use client'
-
 import {contractQuery, decodeOutput, contractTx } from "@scio-labs/use-inkathon";
 import toast from "react-hot-toast";
 

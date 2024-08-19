@@ -33,7 +33,7 @@ export default function NavBar() {
       <div
         className={`fixed top-0 w-full flex justify-center ${
           scrolled
-            ? "border-b border-gray-200 bg-violet-900/50 backdrop-blur-xl"
+            ? "border-b border-violet-700 bg-violet-900/50 backdrop-blur-lg"
             : "bg-white/0"
         } z-30 transition-all`}
       >
@@ -48,9 +48,10 @@ export default function NavBar() {
             />
             <p className={"text-2xl"}>Loybits</p>
           </Link>
+          {pathname === '/AI'? <></> :
           <div>
             <ConnectButton/>
-          </div>
+          </div>}
         </div>
       </div>
     </>;
