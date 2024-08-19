@@ -14,7 +14,26 @@ export const metadata = {
   title: "Loybits - Revolutionizing Customer Loyalty",
   description:
     "Loybits represents an innovative solution that effectively addresses the challenges faced by both SMEs and consumers in the realm of customer loyalty. By providing a platform that balances the needs of both groups",
-  // metadataBase: new URL("https://precedent.dev"),
+    metadataBase: 'https://loybits.vercel.app/',
+    robots: env.isProduction ? 'all' : 'noindex,nofollow',
+    openGraph: {
+      type: 'website',
+      locale: 'en',
+      url: 'https://loybits.vercel.app/',
+      siteName: 'Loybits',
+      images: [
+        {
+          url: '/banner.png',
+          width: 1280,
+          height: 640,
+        },
+      ],
+    },
+    twitter: {
+      site: '@LoybitsToken',
+      creator: '@LoybitsToken',
+      card: '/banner.png',
+    },
 };
 
 export default async function RootLayout({

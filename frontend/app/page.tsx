@@ -55,7 +55,7 @@ export default async function Home() {
             rel="noopener noreferrer"
           >
             <Image
-              src="/business.png"
+              src="/business.webp"
               alt="Logo"
               width="30"
               height="30"
