@@ -6,6 +6,8 @@ Loybits is an innovative Proof of Concept (POC) developed during the intense 3-d
 
 **Important Note**: As a POC conceived and built within a 72-hour timeframe, Loybits serves as a demonstration of concept rather than a production-ready application. Further development, rigorous testing, and refinement would be necessary to transform this prototype into a fully-fledged, market-ready solution.
 
+![stack](https://raw.githubusercontent.com/ivandda/loybits/main/frontend/public/stack.png)
+
 ## 1. Frontend
 
 ### 1.1 Next.js Framework
