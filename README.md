@@ -4,8 +4,8 @@
 <a href="https://taikai.network/nerdconf/hackathons/nerdathon/projects/clzx9vti00n6dwm0156z0xxrw/idea"><img align="left" src="https://i.ibb.co/QFVJzfQ/images.jpg" alt="Taikai" width="30px"/></a>
 </br>
 
-# Loybits: Revolutionizing Customer Loyalty through Polkadot Blockchain and Artificial Intelligence
-
+# Loybits 
+## Revolutionizing Customer Loyalty through Polkadot Blockchain and Artificial Intelligence
 > NERDCONF Hackathon with Polkadot
 
 ## Useful links
