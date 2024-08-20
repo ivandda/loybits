@@ -10,7 +10,7 @@ export default async function fetchAddReward(
       [tokens, name, category, description, id])
 
     if(result.extrinsicHash) {
-      toast.success("Reward added successfully!")
+      toast.success("Reward added successfully! Reload the page to see the changes")
     } else {
       throw new Error("There was an error creating the reward.")
     }

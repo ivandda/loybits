@@ -8,6 +8,7 @@ import Image from "next/image";
 import fetchSimulatePayment from "@/lib/hooks/use-payment";
 import {useInkathon, useRegisteredContract} from "@scio-labs/use-inkathon";
 import {ContractIds} from "@/deployments/deployments";
+import toast from "react-hot-toast";
 
 
 export default function Payment({

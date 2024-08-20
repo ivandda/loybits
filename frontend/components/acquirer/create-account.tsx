@@ -8,6 +8,7 @@ import {useInkathon, useRegisteredContract} from "@scio-labs/use-inkathon";
 import {ContractIds} from "@/deployments/deployments";
 import fetchAddReward from "@/lib/hooks/use-create-reward";
 import fetchCreateAcquirer from "@/lib/hooks/use-create-acquirer";
+import toast from "react-hot-toast";
 
 export default function CreateAccount({
       showModal,

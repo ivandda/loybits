@@ -6,7 +6,7 @@ export default async function fetchRewardClaim(api: any, activeAccount: any, con
     const result = await contractTx(api, activeAccount.address, contract, `register_claim`, {}, [reward])
 
     if(result.extrinsicHash) {
-      toast.success("Reward claimed successfully!")
+      toast.success("Reward claimed successfully! Reload the page to see the changes")
     } else {
       throw new Error("There was an error creating the claim.")
     }

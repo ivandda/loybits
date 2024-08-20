@@ -9,7 +9,7 @@ export default async function fetchCreateAcquirer(
       [tokens, name])
 
     if(result.extrinsicHash) {
-      toast.success("Business added successfully!")
+      toast.success("Business added successfully! Reload the page to see the changes")
     } else {
       throw new Error("There was an error creating the account.")
     }

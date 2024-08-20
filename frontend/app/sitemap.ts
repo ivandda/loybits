@@ -4,7 +4,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: "https://precedent.dev",
+      url: "https://loybits.vercel.app",
       lastModified: new Date(),
     },
     ]

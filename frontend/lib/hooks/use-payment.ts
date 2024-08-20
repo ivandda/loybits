@@ -6,7 +6,7 @@ export default async function fetchSimulatePayment(api: any, activeAccount: any,
     const result = await contractTx(api, activeAccount.address, contract, `register_payment`, {}, [tokens, user])
 
     if(result.extrinsicHash) {
-      toast.success("Payment registered successfully!")
+      toast.success("Payment registered successfully! Reload the page to see the changes")
     } else {
       throw new Error("There was an error creating the payment.")
     }
