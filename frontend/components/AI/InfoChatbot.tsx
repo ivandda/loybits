@@ -59,13 +59,13 @@ const InfoChatbot: React.FC = () => {
 
     return (
         <div className="w-full max-w-md mx-auto font-default flex justify-center">
-            <div className="mr-4 flex-shrink-0 w-[20%]">
+            <div className="mr-4 flex-shrink-0 w-[30%] hidden lg:block">
                 <Image src="/MrLoy.PNG" alt="Mr. Loy" width={100} height={100} className="rounded-full"/>
             </div>
             <div className="flex-grow">
                 <div
                     ref={chatContainerRef}
-                    className="h-[500px] overflow-y-auto p-4 border border-gray-300 rounded-2xl mb-4 bg-white/70 custom-scrollbar"
+                    className="h-[500px] lg:w-[30rem] overflow-y-auto p-4 border border-gray-300 rounded-2xl mb-4 bg-white/70 custom-scrollbar"
                 >
                     {messages.map((message, index) => (
                         <div
@@ -97,7 +97,7 @@ const InfoChatbot: React.FC = () => {
                     </button>
                 </div>
             </div>
-            <div className="mr-4 flex-shrink-0 w-[20%]">
+            <div className="mr-4 flex-shrink-0 w-[30%] hidden lg:block">
             </div>
         </div>
     );
