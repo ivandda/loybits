@@ -12,7 +12,6 @@
 1. [Landing Page](https://loybitstoken.wixsite.com/home)
 2. [Demo](https://loybits.vercel.app/)
 3. [Pitch Video](https://x.com/LoybitsToken/status/1824927734461555129)
-4. [Demo Video]TODO
 4. [Problem & Solution Detailed Description](https://github.com/ivandda/loybits/blob/main/problemAndSolution.md)
 5. [Technological Description](https://github.com/ivandda/loybits/blob/main/technicalStackAndArchitecture.md)
 6. [Download and running instructions](https://github.com/ivandda/loybits/blob/main/RunningInstructions.md)
