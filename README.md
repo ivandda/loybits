@@ -25,7 +25,7 @@
 5. [Technology Stack](#technology-stack)
 6. [How It Works](#how-it-works)
 7. [Future Improvements](#future-improvements)
-8. [Conclusion](#conclusion)
+8. [Why Loybits Should Win NERDATHON Hackathon](#why-loybits-should-win-nerdathon-hackathon)
 
 ## Introduction
 
@@ -92,6 +92,8 @@ Loybits leverages cutting-edge technologies to deliver a robust and scalable pla
 
 [Technical deep dive](https://github.com/ivandda/loybits/blob/main/technicalStackAndArchitecture.md)
 
+[Get started with Loybits for developes ](https://github.com/ivandda/loybits/blob/main/RunningInstructions.md)
+
 ## How It Works
 
 1. **SME Registration**: Businesses join Loybits, choosing a plan suited to their needs
@@ -112,18 +114,9 @@ We have an ambitious roadmap to enhance Loybits:
 - **Business Tool Integration**: Seamless integration with popular SME management software
 - **Regulatory Compliance**: Ensure adherence to relevant financial and data protection regulations
 
+---
 
-## Conclusion
-
-Loybits represents a paradigm shift in customer loyalty programs, offering a solution that's accessible, flexible, and mutually beneficial for SMEs and consumers. By harnessing the power of blockchain and AI, we're not just solving existing problems – we're opening up new possibilities in customer engagement and retention.
-
-Our innovative approach, combined with the robust Polkadot infrastructure and cutting-edge AI, positions Loybits as a strong contender in this hackathon. We believe our solution has the potential to make a significant impact on how SMEs approach customer loyalty, leveling the playing field and fostering a more collaborative business ecosystem.
-
-Join us in revolutionizing customer loyalty – one token at a time!
-
-[Get started with Loybits for developes ](https://github.com/ivandda/loybits/blob/main/RunningInstructions.md)
-
-## Why Loybits Should Win
+## Why Loybits Should Win NERDATHON Hackathon
 
 ### 1. Impact and Utility in the Ecosystem
 
