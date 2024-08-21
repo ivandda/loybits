@@ -122,3 +122,25 @@ Our innovative approach, combined with the robust Polkadot infrastructure and cu
 Join us in revolutionizing customer loyalty – one token at a time!
 
 [Get started with Loybits for developes ](https://github.com/ivandda/loybits/blob/main/RunningInstructions.md)
+
+## Why Loybits Should Win
+
+### 1. Impact and Utility in the Ecosystem
+
+Loybits revolutionizes the loyalty program landscape within the Web3 ecosystem, addressing critical needs for both SMEs and consumers. By leveraging Polkadot's infrastructure, it demonstrates a high-impact, real-world use case for blockchain technology, creating significant commercial value by opening new revenue streams for SMEs and enhancing value for consumers.
+
+### 2. Originality, Creativity, and Innovation
+
+Our project presents a innovative approach by uniquely combining blockchain and AI to decentralize and democratize access to advanced loyalty tools for SMEs. This innovation serves as a starting point for future developments in decentralized customer relationship management.
+
+### 3. Mass Usability
+
+Designed for mass adoption, Loybits addresses real-world problems with a highly feasible and adaptable solution. Its robust business model creates value for all participants - SMEs, consumers, and the platform itself. Built on a scalable architecture with a focus on long-term value preservation, Loybits ensures sustainability and growth potential.
+
+### 4. Technical Difficulty
+
+Loybits represents a significant technical achievement, seamlessly integrating Polkadot's blockchain infrastructure with advanced AI capabilities and user-friendly interfaces. The project's complex architecture, involving smart contract development, wallet integration and AI-driven tools, showcases a high level of technical expertise.
+
+### 5. Social Impact
+
+Despite not competing on the social impact category we think that, by empowering SMEs with advanced loyalty tools, Loybits contributes to leveling the playing field between small businesses and large corporations, potentially improving local economies. For consumers, it enhances quality of life by simplifying loyalty program management and increasing reward value. The project's collaborative ecosystem fosters community support among local businesses, driving positive social change.
