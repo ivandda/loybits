@@ -1,4 +1,4 @@
-# Loybits: Technical Stack and Architecture (POC)
+# Technical Stack and Architecture (POC)
 
 ## Overview
 

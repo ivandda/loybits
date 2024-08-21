@@ -1,4 +1,4 @@
-# Loybits: Mission, Vision, and Job to be Done
+# Mission, Vision, and Job to be Done
 
 ## Our Vision
 

@@ -1,4 +1,4 @@
-# Loybits: Revolutionizing Customer Loyalty through Polkadot Blockchain and Artificial Intelligence
+# Problem statement and solution detailed description
 
 ## Introduction
 
